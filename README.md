@@ -6,7 +6,7 @@ uses react, react router & firebase for client-side authentication
 
 - create an app in your Firebase console
 - copy the .env file to .env.development and fill in the items from the firebase console
-- `npn i`
+- `npm i`
 - `npm start`
 
 
