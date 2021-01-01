@@ -55,7 +55,6 @@ export const authMethods = {
         //there shouldn't every be an error from firebase but just in case
         setErrors(prev => ([...prev, err.message]));
 
-        // whether firebase works or not
         localStorage.removeItem('token');
         setToken(null);
         console.error(err.message);

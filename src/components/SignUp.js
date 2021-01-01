@@ -13,8 +13,8 @@ const SignUp = function (props) {
     props.history.push('/');
   };
 
-  const handleChange = function (event) {
-    const { name, value } = event.target;
+  const handleChange = function (e) {
+    const { name, value } = e.target;
     // console.log(inputs);
     setInputs(prev => ({ ...prev, [name]: value }));
   };

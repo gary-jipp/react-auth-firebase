@@ -10,10 +10,10 @@ const SignIn = function () {
     event.preventDefault();
     handleSignin();
   };
-  
   const handleChange = function (event) {
+    const { name, value } = event.target;
     // console.log(inputs);
-    setInputs(prev => ({ ...prev, [event.target.name]: event.target.value }));
+    setInputs(prev => ({ ...prev, [name]: value }));
   };
 
   const errorList = errors.map((error, i) =>
