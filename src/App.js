@@ -11,16 +11,16 @@ function App() {
   const { token } = useContext(context);
 
   return (
-    <BrowserRouter>
-      <>
+    <div className="App">
+      <BrowserRouter>
         {/* switch allows switching which components render.  */}
         <Switch>
           <Route exact path='/' render={rProps => token === null ? <SignIn /> : <Home />} />
           <Route exact path='/signin' component={SignIn} />
           <Route exact path='/signup' component={SignUp} />
         </Switch>
-      </>
-    </BrowserRouter>
+      </BrowserRouter>
+    </div>
   );
 }
 

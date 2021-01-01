@@ -6,8 +6,10 @@ const Home = function (props) {
 
   return (
     <div>
-      Home, login successful
-      <button onClick={handleSignout}>sign out </button>
+      <h3>Home Page</h3>
+      <div>
+        <button onClick={handleSignout}>
+          sign out </button></div>
     </div>
   );
 };

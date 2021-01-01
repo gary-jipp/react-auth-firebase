@@ -19,6 +19,12 @@ const SignUp = function (props) {
     setInputs(prev => ({ ...prev, [name]: value }));
   };
 
+  const signIn = function () {
+    // console.log(props);
+    props.history.push('/signin');
+  };
+
+
   const errorList = errors.map((error, i) =>
     <li style={{ color: 'red' }} key={i}>
       {error}
@@ -27,11 +33,20 @@ const SignUp = function (props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      Signup
-      <input onChange={handleChange} name="email" placeholder='email' value={inputs.email} />
-      <input onChange={handleChange} name="password" placeholder='password' value={inputs.password} />
-      <button>signup</button>
-
+      <h3>Sign Up new user</h3>
+      <h4>Enter New Email and Password</h4>
+      <div>
+        <div>
+          <input onChange={handleChange} name="email" placeholder='email' value={inputs.email} />
+        </div>
+        <div>
+          <input onChange={handleChange} name="password" placeholder='password' value={inputs.password} />
+        </div>
+        <div>
+          <button>Submit</button>
+          <button type="button" onClick={signIn}>Sign In</button>
+        </div>
+      </div>
       <ul>
         {errors.length > 0 && errorList}
       </ul>
