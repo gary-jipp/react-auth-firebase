@@ -14,13 +14,14 @@ export const authMethods = {
   },
 
   signup: (email, password, setErrors, setToken) => {
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(async res => {
-        // parse user token  from the returned data
-        const token = Object.entries(res.user)[5][1].b;
+
+    // returns a promise
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        const token = Object.entries(res.user)[5][1].b; // parse user token 
 
         //set token to localStorage & state
-        await localStorage.setItem('token', token);
+        localStorage.setItem('token', token);
         setToken(token);
       })
       .catch(err => {
@@ -29,12 +30,14 @@ export const authMethods = {
   },
 
   signin: (email, password, setErrors, setToken) => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(async res => {
+
+    // returns a promise
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(res => {
         const token = Object.entries(res.user)[5][1].b;
 
         //set token to localStorage 
-        await localStorage.setItem('token', token);
+        localStorage.setItem('token', token);
         setToken(window.localStorage.token);
       })
       .catch(err => {
@@ -44,15 +47,15 @@ export const authMethods = {
 
   //no need for email and password
   signout: (setErrors, setToken) => {
-    // signOut is a no argument function
-    firebase.auth().signOut().then(res => {
-      //remove the token
-      localStorage.removeItem('token');
-      //set the token back to original state
-      setToken(null);
-    })
+
+    // returns a promise
+    return firebase.auth().signOut() // signOut is a no argument function
+      .then(res => {
+        localStorage.removeItem('token');
+        setToken(null);
+      })
       .catch(err => {
-        //there shouldn't every be an error from firebase but just in case
+        //there shouldn't be an error from firebase here, but just in case
         setErrors(prev => ([...prev, err.message]));
 
         localStorage.removeItem('token');
