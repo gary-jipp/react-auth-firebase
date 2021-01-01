@@ -15,7 +15,7 @@ export const authMethods = {
 
   signup: (email, password, setErrors, setToken) => {
 
-    // returns a promise
+    // returns a promise in case we want to use
     return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(res => {
         const token = Object.entries(res.user)[5][1].b; // parse user token 
@@ -31,7 +31,7 @@ export const authMethods = {
 
   signin: (email, password, setErrors, setToken) => {
 
-    // returns a promise
+    // returns a promise in case we want to use
     return firebase.auth().signInWithEmailAndPassword(email, password)
       .then(res => {
         const token = Object.entries(res.user)[5][1].b;

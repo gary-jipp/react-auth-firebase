@@ -10,6 +10,7 @@ const SignIn = function () {
     event.preventDefault();
     handleSignin();
   };
+  
   const handleChange = function (event) {
     const { name, value } = event.target;
     // console.log(inputs);

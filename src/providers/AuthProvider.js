@@ -13,24 +13,19 @@ const AuthProvider = function (props) {
   }, []);
 
   const handleSignup = function () {
-    // console.log('handleSignup');
-
     // calling signup from firebase server
-    authMethods.signup(inputs.email, inputs.password, setErrors, setToken);
+    return authMethods.signup(inputs.email, inputs.password, setErrors, setToken);
     // console.log(errors, token);
   };
 
   const handleSignin = function () {
-    // console.log('handleSignin');
-
-    // signin
-    authMethods.signin(inputs.email, inputs.password, setErrors, setToken);
-    // console.log(inputs.email);
-    // console.log(errors, token);
+    // signin - returns a promise (in case we want to wait)
+    return authMethods.signin(inputs.email, inputs.password, setErrors, setToken);
   };
 
+  // signout - returns a promise
   const handleSignout = function () {
-    authMethods.signout(setErrors, setToken);
+    return authMethods.signout(setErrors, setToken);
   };
 
   const value = {
