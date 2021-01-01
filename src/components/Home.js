@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { firebaseAuth } from '../providers/AuthProvider';
+import { context } from '../providers/AuthProvider';
 
 const Home = function (props) {
-  const { handleSignout } = useContext(firebaseAuth);
+  const { handleSignout } = useContext(context);
 
   return (
     <div>

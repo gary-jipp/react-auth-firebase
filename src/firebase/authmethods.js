@@ -29,14 +29,12 @@ export const authMethods = {
   },
 
   signin: (email, password, setErrors, setToken) => {
-    //change from create users to...
     firebase.auth().signInWithEmailAndPassword(email, password)
-      //everything is almost exactly the same as the function above
       .then(async res => {
         const token = Object.entries(res.user)[5][1].b;
+
         //set token to localStorage 
         await localStorage.setItem('token', token);
-
         setToken(window.localStorage.token);
       })
       .catch(err => {

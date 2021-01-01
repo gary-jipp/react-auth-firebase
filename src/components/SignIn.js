@@ -1,21 +1,19 @@
 
 // add useContext
 import React, { useContext } from 'react';
-import { firebaseAuth } from '../providers/AuthProvider';
+import { context } from '../providers/AuthProvider';
 
 const SignIn = function () {
-  const { handleSignin, inputs, setInputs, errors } = useContext(firebaseAuth);
+  const { handleSignin, inputs, setInputs, errors } = useContext(context);
 
-  const handleSubmit = function (e) {
-    e.preventDefault();
-    // console.log('handleSubmit');
+  const handleSubmit = function (event) {
+    event.preventDefault();
     handleSignin();
-
   };
-  const handleChange = function (e) {
-    const { name, value } = e.target;
+  
+  const handleChange = function (event) {
     // console.log(inputs);
-    setInputs(prev => ({ ...prev, [name]: value }));
+    setInputs(prev => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
   const errorList = errors.map((error, i) =>
@@ -31,12 +29,12 @@ const SignIn = function () {
         <input onChange={handleChange} name="email" placeholder='email' value={inputs.email} />
       </div>
       <div>
-        <input onChange={handleChange} name="password" placeholder='password' value={inputs.password} />
+        <input onChange={handleChange} type="password" name="password" placeholder='password' value={inputs.password} />
       </div>
       <button>signin</button>
 
       <ul>
-        {errors.length && errorList}
+        {errors.length > 0 && errorList}
       </ul>
     </form>
   );

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { authMethods } from '../firebase/authmethods';
 
-export const firebaseAuth = React.createContext();
+export const context = React.createContext();
 
 const AuthProvider = function (props) {
-  const initState = { email: '', password: '' };
-  const [inputs, setInputs] = useState(initState);
+  const [inputs, setInputs] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState([]);
   const [token, setToken] = useState(null);
 
@@ -34,7 +33,7 @@ const AuthProvider = function (props) {
     authMethods.signout(setErrors, setToken);
   };
 
-  const obj = {
+  const value = {
     handleSignup,
     handleSignin,
     token,
@@ -45,10 +44,10 @@ const AuthProvider = function (props) {
   };
 
   return (
-    <firebaseAuth.Provider
-      value={obj}>
+    <context.Provider
+      value={value}>
       {props.children}
-    </firebaseAuth.Provider>
+    </context.Provider>
   );
 };
 
