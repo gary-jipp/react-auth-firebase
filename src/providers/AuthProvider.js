@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { authMethods } from '../firebase/authmethods';
 
-export const context = React.createContext();
+
 
 const AuthProvider = function (props) {
   const [inputs, setInputs] = useState({ email: '', password: '' });
@@ -47,3 +47,4 @@ const AuthProvider = function (props) {
 };
 
 export default AuthProvider;
+export const context = React.createContext();
