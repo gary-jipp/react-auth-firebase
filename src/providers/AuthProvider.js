@@ -28,7 +28,7 @@ const AuthProvider = function (props) {
     return authMethods.signout(setErrors, setToken);
   };
 
-  const value = {
+  const data = {
     handleSignup,
     handleSignin,
     token,
@@ -40,7 +40,7 @@ const AuthProvider = function (props) {
 
   return (
     <context.Provider
-      value={value}>
+      value={data}>
       {props.children}
     </context.Provider>
   );
