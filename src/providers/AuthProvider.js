@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { authMethods } from '../firebase/authmethods';
 
-
-
 const AuthProvider = function (props) {
   const [inputs, setInputs] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState([]);
@@ -39,8 +37,7 @@ const AuthProvider = function (props) {
   };
 
   return (
-    <context.Provider
-      value={data}>
+    <context.Provider value={data}>
       {props.children}
     </context.Provider>
   );
