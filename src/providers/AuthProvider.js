@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { authMethods } from '../firebase/authmethods';
 
 export default function AuthProvider(props) {
-  const [user, setUser] = useState({ email: '', password: '' });
+  const [inputs, setInputs] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState([]);
   const [token, setToken] = useState(null);
 
@@ -12,13 +12,13 @@ export default function AuthProvider(props) {
 
   const handleSignup = function () {
     // calling signup from firebase server
-    return authMethods.signup(user.email, user.password, setErrors, setToken);
+    return authMethods.signup(inputs.email, inputs.password, setErrors, setToken);
     // console.log(errors, token);
   };
 
   const handleSignin = function () {
     // signin - returns a promise (in case we want to wait)
-    return authMethods.signin(user.email, user.password, setErrors, setToken);
+    return authMethods.signin(inputs.email, inputs.password, setErrors, setToken);
   };
 
   // signout - returns a promise
@@ -27,10 +27,10 @@ export default function AuthProvider(props) {
   };
 
   const authData = {
-    user,
+    inputs,
     token,
     errors,
-    setUser,
+    setInputs,
     handleSignin,
     handleSignup,
     handleSignout,

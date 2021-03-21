@@ -5,7 +5,7 @@ import { authContext } from '../providers/AuthProvider';
 import { withRouter } from 'react-router-dom';
 
 const SignIn = function (props) {
-  const { handleSignin, user, setUser, errors } = useContext(authContext);
+  const { handleSignin, inputs, setInputs, errors } = useContext(authContext);
 
   const handleSubmit = function (event) {
     console.log("Submit");
@@ -16,7 +16,7 @@ const SignIn = function (props) {
   const handleChange = function (event) {
     const { name, value } = event.target;
     // console.log(inputs);
-    setUser(prev => ({ ...prev, [name]: value }));
+    setInputs(prev => ({ ...prev, [name]: value }));
   };
 
   const signUp = function () {
@@ -39,13 +39,13 @@ const SignIn = function (props) {
           <input name="email"
             placeholder='email'
             onChange={handleChange}
-            value={user.email} />
+            value={inputs.email} />
         </div>
         <div>
           <input type="password" name="password"
             placeholder='password'
             onChange={handleChange}
-            value={user.password} />
+            value={inputs.password} />
         </div>
         <div>
           <button type="submit">Submit</button>
