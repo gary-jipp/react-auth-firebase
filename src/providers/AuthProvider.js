@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { authMethods } from '../firebase/authmethods';
 
-const AuthProvider = function (props) {
-  const [user, setInputs] = useState({ email: '', password: '' });
+export default function AuthProvider(props) {
+  const [user, setUser] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState([]);
   const [token, setToken] = useState(null);
 
@@ -26,22 +26,21 @@ const AuthProvider = function (props) {
     return authMethods.signout(setErrors, setToken);
   };
 
-  const data = {
-    handleSignup,
-    handleSignin,
+  const authData = {
+    user,
     token,
-    inputs: user,
-    setInputs,
     errors,
+    setUser,
+    handleSignin,
+    handleSignup,
     handleSignout,
   };
 
   return (
-    <context.Provider value={data}>
+    <authContext.Provider value={authData}>
       {props.children}
-    </context.Provider>
+    </authContext.Provider>
   );
 };
 
-export default AuthProvider;
-export const context = React.createContext();
+export const authContext = React.createContext();

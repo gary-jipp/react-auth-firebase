@@ -4,11 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Home from './components/Home';
-import { context } from './providers/AuthProvider';
+import { authContext } from './providers/AuthProvider';
 import './App.css';
 
 function App() {
-  const { token } = useContext(context);
+  const { token } = useContext(authContext);
 
   return (
     <div className="App">

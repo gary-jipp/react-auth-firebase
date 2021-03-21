@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { context } from '../providers/AuthProvider';
+import { authContext } from '../providers/AuthProvider';
 
 const Home = function (props) {
-  const { handleSignout } = useContext(context);
+  const { handleSignout } = useContext(authContext);
 
   return (
     <div>
