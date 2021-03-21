@@ -7,7 +7,7 @@ import SignIn from './components/SignIn';
 import Home from './components/Home';
 import './App.css';
 
-function App() {
+export default function App() {
   const { token } = useContext(authContext);
 
   return (
@@ -24,4 +24,3 @@ function App() {
   );
 }
 
-export default App;
