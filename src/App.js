@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { authContext } from './providers/AuthProvider';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Home from './components/Home';
-import { authContext } from './providers/AuthProvider';
 import './App.css';
 
 function App() {
