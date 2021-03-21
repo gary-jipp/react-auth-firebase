@@ -9,13 +9,13 @@ import './App.css';
 
 export default function App() {
   const { token } = useContext(authContext);
-
+ 
   return (
     <div className="App">
       <BrowserRouter>
         {/* switch allows switching which components render.  */}
         <Switch>
-          <Route exact path='/' render={rProps => token === null ? <SignIn /> : <Home />} />
+          <Route exact path='/' render={() => token === null ? <SignIn /> : <Home />} />
           <Route exact path='/signin' component={SignIn} />
           <Route exact path='/signup' component={SignUp} />
         </Switch>
