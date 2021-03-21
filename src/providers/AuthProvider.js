@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { authMethods } from '../firebase/authmethods';
 
 export default function AuthProvider(props) {
+  // Used by the login inputs onChange
   const [inputs, setInputs] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState([]);
   const [token, setToken] = useState(null);
